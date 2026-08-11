@@ -1,13 +1,12 @@
 // ============================================================
 // PROJECTS DATA — A. Mohammed Asbar
-// Edit this file to add/update your projects!
 // ============================================================
 // Fields:
 //   id       — unique identifier (string)
 //   title    — project name
 //   desc     — short description shown on card
 //   tags     — technology tags array
-//   category — "web" | "app" | "design" (used for filtering)
+//   category — "web" | "app" | "ml" | "design" (used for filtering)
 //   status   — "live" | "wip" | "archived"
 //   url      — live URL shown in the iframe preview
 //   github   — GitHub repo URL (set null to hide)
@@ -16,26 +15,48 @@
 
 export const projects = [
   {
+    id: "proj-multiple-disease",
+    title: "Multiple Disease Prediction System",
+    desc: "An interactive AI healthcare web application predicting Diabetes, Heart Disease, and Parkinson's disease using Machine Learning classifiers.",
+    tags: ["Python", "Streamlit", "Scikit-Learn", "Machine Learning", "Healthcare AI"],
+    category: "ml",
+    status: "live",
+    url: "https://multiple-disease-predictor-asbarst-nov14.streamlit.app/",
+    github: "https://github.com/asbarnst",
+    image: "/multiple-disease.png",
+  },
+  {
     id: "proj-breast-cancer",
     title: "Breast Cancer Predictor",
     desc: "An interactive Machine Learning web app predicting cell cluster malignancy using Wisconsin Diagnostic measurements with custom radar charts and probability insights.",
     tags: ["Python", "Streamlit", "Scikit-Learn", "Plotly", "Pandas"],
-    category: "app",
+    category: "ml",
     status: "live",
-    url: "https://breast-cancer-predictor.streamlit.app", // Replace with your live Streamlit URL
+    url: "https://breast-cancer-predictor-asbarst-oct22.streamlit.app/",
     github: "https://github.com/asbarnst/breast-cancer-predictor",
-    image: null,
+    image: "/breast-cancer.png",
   },
   {
     id: "proj-educore",
-    title: "EduCore - Smart Student Management System",
-    desc: "A full-stack Smart Student Management System featuring role-based portals for Students, Faculty, and Administrators with course access, attendance tracking, grades, AI insights, live classes, and administrative analytics.",
-    tags: ["Python", "Flask", "Render", "REST API", "AI Insights"],
+    title: "Edu Core — Centralized Learning Platform",
+    desc: "A centralized learning platform designed to streamline academic activities for students and educators featuring course management, study material sharing, assignment submission, attendance, and progress tracking.",
+    tags: ["Python", "Flask", "Render", "REST API", "Full Stack"],
     category: "web",
     status: "live",
     url: "https://educore-spark-x.onrender.com/",
-    github: "https://github.com",
+    github: "https://github.com/asbarnst",
     image: "/educore.png",
+  },
+  {
+    id: "proj-traffic-management",
+    title: "Traffic Management System",
+    desc: "A smart traffic management system designed to improve traffic flow and reduce congestion in urban areas with vehicle monitoring, traffic signal control, real-time data processing, and signal timing optimization.",
+    tags: ["Python", "Signal Control", "Vehicle Monitoring", "Data Analytics"],
+    category: "app",
+    status: "live",
+    url: null,
+    github: "https://github.com/asbarnst",
+    image: null,
   },
   {
     id: "proj-employee-management",
@@ -56,62 +77,7 @@ export const projects = [
     category: "web",
     status: "live",
     url: "https://multi-catelog-web-page.vercel.app",
-    github: "https://github.com",            // ← Replace with your GitHub repo
+    github: "https://github.com/asbarnst",
     image: "/ashes-catalog.png",
-  },
-  {
-    id: "proj-2",
-    title: "Student Performance Predictor",
-    desc: "ML model that predicts student academic performance based on socio-economic and academic factors using Scikit-learn.",
-    tags: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
-    category: "app",
-    status: "live",
-    url: "https://streamlit.io",
-    github: "https://github.com",
-    image: null,
-  },
-  {
-    id: "proj-3",
-    title: "Automated Testing Dashboard",
-    desc: "A Selenium-powered test automation suite with a real-time dashboard showing test results, pass rates and failure logs.",
-    tags: ["Selenium", "Python", "JUnit", "HTML/CSS"],
-    category: "web",
-    status: "wip",
-    url: "https://www.selenium.dev",
-    github: "https://github.com",
-    image: null,
-  },
-  {
-    id: "proj-4",
-    title: "Data Analysis Portfolio",
-    desc: "A collection of data analysis projects covering EDA, data cleaning, visualization and statistical insights using real datasets.",
-    tags: ["Python", "Pandas", "Seaborn", "Jupyter"],
-    category: "design",
-    status: "live",
-    url: "https://jupyter.org",
-    github: "https://github.com",
-    image: null,
-  },
-  {
-    id: "proj-5",
-    title: "College Event Management System",
-    desc: "Full-stack web application for managing college events — registrations, scheduling, notifications and admin dashboard.",
-    tags: ["React", "Node.js", "MySQL", "REST API"],
-    category: "web",
-    status: "live",
-    url: "https://reactjs.org",
-    github: "https://github.com",
-    image: null,
-  },
-  {
-    id: "proj-6",
-    title: "Image Classification with CNN",
-    desc: "Deep learning project classifying images using a Convolutional Neural Network trained on a custom dataset with TensorFlow.",
-    tags: ["TensorFlow", "Python", "CNN", "Deep Learning"],
-    category: "app",
-    status: "wip",
-    url: "https://tensorflow.org",
-    github: "https://github.com",
-    image: null,
   },
 ];

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum Vitae — A. Mohammed Asbar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Playfair+Display:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ======== PRINT DEFAULTS ======== */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ======== SCREEN ACTION BAR ======== */
+    .action-bar {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 0.85rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.4);
+    }
+
+    .action-bar a, .action-bar button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      color: #e2e8f0;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .action-bar .btn-print {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+    }
+
+    .action-bar a:hover, .action-bar button:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+    }
+
+    .action-bar .btn-print:hover {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    }
+
+    .action-bar-right {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    /* ======== PAGE WRAPPER ======== */
+    body {
+      background: #e8ecf0;
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+    }
+
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 2.5rem 1rem 4rem;
+    }
+
+    /* ======== RESUME PAPER ======== */
+    .resume {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ======== LEFT SIDEBAR ======== */
+    .layout {
+      display: flex;
+      flex: 1;
+      min-height: 297mm;
+    }
+
+    .sidebar {
+      width: 74mm;
+      background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
+      color: #f1f5f9;
+      padding: 2.8rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative circles on sidebar */
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      bottom: 80px;
+      left: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    /* Profile photo */
+    .profile-photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-photo {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 3px solid rgba(139, 92, 246, 0.8);
+      box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.15), 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    /* Sidebar sections */
+    .side-section {
+      margin-bottom: 1.6rem;
+    }
+
+    .side-heading {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.35);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .side-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.72rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .side-contact-item .icon {
+      font-size: 0.75rem;
+      margin-top: 0.05rem;
+      flex-shrink: 0;
+      color: #818cf8;
+    }
+
+    .side-contact-item a {
+      color: #c4b5fd;
+      text-decoration: none;
+    }
+
+    .side-contact-item a:hover {
+      color: #a78bfa;
+    }
+
+    /* Skills bars */
+    .skill-item {
+      margin-bottom: 0.65rem;
+    }
+
+    .skill-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 0.25rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-level-text {
+      font-size: 0.6rem;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .skill-bar-bg {
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #818cf8, #a78bfa);
+    }
+
+    /* Side tags */
+    .side-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .side-tag {
+      background: rgba(99, 102, 241, 0.18);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #c4b5fd;
+      font-size: 0.62rem;
+      font-weight: 600;
+      padding: 0.22rem 0.55rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Language dots */
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .lang-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .lang-level {
+      font-size: 0.6rem;
+      color: #94a3b8;
+    }
+
+    .lang-dots {
+      display: flex;
+      gap: 3px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(139,92,246,0.4);
+    }
+
+    .dot.filled {
+      background: #818cf8;
+      border-color: #6366f1;
+    }
+
+    /* Certifications list */
+    .cert-item {
+      font-size: 0.68rem;
+      color: #cbd5e1;
+      margin-bottom: 0.4rem;
+      padding-left: 0.7rem;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .cert-item::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: #a78bfa;
+      font-size: 0.5rem;
+      top: 0.1rem;
+    }
+
+    /* ======== MAIN CONTENT ======== */
+    .main-content {
+      flex: 1;
+      padding: 2.5rem 2rem 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Name + title block */
+    .name-block {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 2px solid #e2e8f0;
+      position: relative;
+    }
+
+    .name-block::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    }
+
+    .cv-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .cv-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #6366f1;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    .cv-subtitle {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+
+    /* Section headings */
+    .section {
+      margin-bottom: 1.3rem;
+    }
+
+    .section-heading {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6366f1;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, #e2e8f0, transparent);
+    }
+
+    /* About / Objective */
+    .about-text {
+      font-size: 0.8rem;
+      color: #475569;
+      line-height: 1.75;
+      font-style: normal;
+    }
+
+    .about-text strong {
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    /* Project cards */
+    .project-card {
+      margin-bottom: 1rem;
+      padding-left: 0.8rem;
+      border-left: 2.5px solid #e2e8f0;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0.25rem;
+      left: -4px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #6366f1;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-name {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-role-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+      background: #f0f4ff;
+      border: 1px solid #c7d2fe;
+      color: #4338ca;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-url {
+      font-size: 0.63rem;
+      color: #6366f1;
+      font-family: 'JetBrains Mono', monospace;
+      text-decoration: none;
+    }
+
+    .project-url:hover {
+      text-decoration: underline;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .tech-pill {
+      font-size: 0.58rem;
+      font-weight: 600;
+      padding: 0.12rem 0.45rem;
+      border-radius: 3px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-bullets {
+      list-style: none;
+    }
+
+    .project-bullets li {
+      font-size: 0.76rem;
+      color: #64748b;
+      line-height: 1.55;
+      padding-left: 0.9rem;
+      position: relative;
+      margin-bottom: 0.15rem;
+    }
+
+    .project-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #a5b4fc;
+      font-weight: 700;
+    }
+
+    /* Education */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .edu-main .edu-degree {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .edu-main .edu-inst {
+      font-size: 0.76rem;
+      color: #64748b;
+      margin-top: 0.2rem;
+    }
+
+    .edu-main .edu-gpa {
+      font-size: 0.72rem;
+      color: #6366f1;
+      margin-top: 0.15rem;
+      font-weight: 600;
+    }
+
+    .edu-year-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #4338ca;
+      background: #eef2ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Quote / motivation block */
+    .motivation-block {
+      background: linear-gradient(135deg, #faf5ff 0%, #f0f4ff 100%);
+      border: 1px solid #ddd6fe;
+      border-left: 3px solid #6366f1;
+      border-radius: 0 8px 8px 0;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .motivation-block p {
+      font-size: 0.78rem;
+      color: #475569;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .motivation-block p strong {
+      color: #3730a3;
+      font-style: normal;
+    }
+
+    /* Footer */
+    .resume-footer {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.62rem;
+      color: #94a3b8;
+    }
+
+    .resume-footer a {
+      color: #6366f1;
+      text-decoration: none;
+    }
+
+    /* ======== PRINT STYLES ======== */
+    @media print {
+      body {
+        background: white !important;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .page-wrapper {
+        padding: 0 !important;
+      }
+      .resume {
+        box-shadow: none !important;
+        width: 100% !important;
+      }
+    }
+
+    /* ======== SCREEN RESPONSIVE ======== */
+    @media screen and (max-width: 750px) {
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+      .side-section {
+        min-width: 140px;
+        flex: 1;
+      }
+      .profile-photo-wrap {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ACTION BAR (screen only) ===== -->
+  <div class="action-bar">
+    <a href="/">← Back to Portfolio</a>
+    <div class="action-bar-right">
+      <a href="/Mohammed_Asbar_Resume.pdf" download>↓ Download PDF</a>
+      <button class="btn-print" onclick="window.print()">🖨️ Save / Print as PDF</button>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="resume">
+      <div class="layout">
+
+        <!-- ============ SIDEBAR ============ -->
+        <aside class="sidebar">
+
+          <!-- Photo -->
+          <div class="profile-photo-wrap">
+            <img src="/profile.jpg" alt="Mohammed Asbar" class="profile-photo" />
+          </div>
+
+          <!-- Contact -->
+          <div class="side-section">
+            <div class="side-heading">Contact</div>
+            <div class="side-contact-item">
+              <span class="icon">📍</span>
+              <span>Ukkadam, Coimbatore<br/>Tamil Nadu, India</span>
+            </div>
+            <div class="side-contact-item">
+              <span class="icon">📞</span>
+              <a href="tel:+919962034901">+91 99620 34901</a>
+            </div>
+            <div class="side-contact-item">
+              <span class="icon">✉️</span>
+              <a href="mailto:asbarnstmohammed@gmail.com">asbarnstmohammed<br/>@gmail.com</a>
+            </div>
+            <div class="side-contact-item">
+              <span class="icon">🔗</span>
+              <a href="https://linkedin.com/in/mohammed-asbar-41525b305" target="_blank">LinkedIn Profile</a>
+            </div>
+            <div class="side-contact-item">
+              <span class="icon">💻</span>
+              <a href="https://github.com/asbarnst" target="_blank">github.com/asbarnst</a>
+            </div>
+          </div>
+
+          <!-- Technical Skills -->
+          <div class="side-section">
+            <div class="side-heading">Technical Skills</div>
+            <div class="skill-item">
+              <div class="skill-label">Python <span class="skill-level-text">Advanced</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">Machine Learning <span class="skill-level-text">Proficient</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">JavaScript / React <span class="skill-level-text">Proficient</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">Flask / Node.js <span class="skill-level-text">Intermediate</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:74%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">SQL / DBMS <span class="skill-level-text">Intermediate</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label">Selenium / Testing <span class="skill-level-text">Intermediate</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:70%"></div></div>
+            </div>
+          </div>
+
+          <!-- Tools & Tech -->
+          <div class="side-section">
+            <div class="side-heading">Tools & Technologies</div>
+            <div class="side-tags">
+              <span class="side-tag">Scikit-Learn</span>
+              <span class="side-tag">TensorFlow</span>
+              <span class="side-tag">Pandas</span>
+              <span class="side-tag">NumPy</span>
+              <span class="side-tag">Streamlit</span>
+              <span class="side-tag">Plotly</span>
+              <span class="side-tag">REST APIs</span>
+              <span class="side-tag">Git</span>
+              <span class="side-tag">MySQL</span>
+              <span class="side-tag">Postman</span>
+              <span class="side-tag">WebRTC</span>
+              <span class="side-tag">Render</span>
+              <span class="side-tag">Vercel</span>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div class="side-section">
+            <div class="side-heading">Languages</div>
+            <div class="lang-item">
+              <div>
+                <div class="lang-name">English</div>
+                <div class="lang-level">Professional</div>
+              </div>
+              <div class="lang-dots">
+                <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div>
+                <div class="lang-name">Tamil</div>
+                <div class="lang-level">Native</div>
+              </div>
+              <div class="lang-dots">
+                <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div>
+                <div class="lang-name">Italian</div>
+                <div class="lang-level">Beginner — Learning</div>
+              </div>
+              <div class="lang-dots">
+                <div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div>
+                <div class="lang-name">Arabic</div>
+                <div class="lang-level">Conversational</div>
+              </div>
+              <div class="lang-dots">
+                <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div>
+                <div class="lang-name">Japanese</div>
+                <div class="lang-level">Beginner — Learning</div>
+              </div>
+              <div class="lang-dots">
+                <div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              </div>
+            </div>
+            <div class="lang-item">
+              <div>
+                <div class="lang-name">German</div>
+                <div class="lang-level">Beginner — Learning</div>
+              </div>
+              <div class="lang-dots">
+                <div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="side-section">
+            <div class="side-heading">Certifications</div>
+            <div class="cert-item">Machine Learning — Coursera / Online (2025)</div>
+            <div class="cert-item">Python for Data Science (2025)</div>
+            <div class="cert-item">SQL & Database Management (2025)</div>
+          </div>
+
+          <!-- Interests -->
+          <div class="side-section">
+            <div class="side-heading">Interests</div>
+            <div class="side-tags">
+              <span class="side-tag">AI / ML Research</span>
+              <span class="side-tag">Open Source</span>
+              <span class="side-tag">Cloud Tech</span>
+              <span class="side-tag">Healthcare AI</span>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- ============ MAIN CONTENT ============ -->
+        <main class="main-content">
+
+          <!-- Name block -->
+          <div class="name-block">
+            <div class="cv-name">A. Mohammed Asbar</div>
+            <div class="cv-title">Software Developer &amp; AI Enthusiast</div>
+            <div class="cv-subtitle">B.Tech — Artificial Intelligence &amp; Data Science · Hindusthan Institute of Technology, India</div>
+          </div>
+
+          <!-- Motivation / Personal Statement -->
+          <div class="motivation-block">
+            <p>
+              I am genuinely excited about the opportunity to study in Italy — a country I admire not only for its rich academic tradition but also for its forward-thinking approach to technology and innovation. Studying at an Italian university would allow me to <strong>merge my passion for Artificial Intelligence and software engineering</strong> with an international perspective that I deeply value. I am the kind of learner who does not stop at theory — I build things, break them, and rebuild them better. Every project I have shipped is proof of that mindset.
+            </p>
+          </div>
+
+          <!-- About Me -->
+          <div class="section">
+            <div class="section-heading">About Me</div>
+            <p class="about-text">
+              I'm a 4th-year B.Tech student specialising in <strong>Artificial Intelligence &amp; Data Science</strong>, and honestly, I love what I do. Over the past two years I have gone from writing my first Python script to deploying full-stack applications and live ML models that real people use. My work spans healthcare AI, urban traffic management, enterprise software, and e-commerce — not because I had to, but because I was genuinely curious about each of those problems.
+              <br/><br/>
+              I believe the best software is <strong>built with empathy</strong>: for the user, for the team, and for the problem. That belief shows in how I write code — clean, documented, and tested. I am comfortable working across the stack and I pick up new tools quickly, which I think is more valuable than knowing any single technology perfectly.
+            </p>
+          </div>
+
+          <!-- Projects -->
+          <div class="section">
+            <div class="section-heading">Selected Projects</div>
+
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-name">Multiple Disease Prediction System</span>
+                <div class="project-meta">
+                  <span class="project-role-badge">ML / Healthcare AI</span>
+                  <a href="https://multiple-disease-predictor-asbarst-nov14.streamlit.app/" target="_blank" class="project-url">↗ Live</a>
+                </div>
+              </div>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span><span class="tech-pill">Streamlit</span><span class="tech-pill">Scikit-Learn</span><span class="tech-pill">Pandas</span>
+              </div>
+              <ul class="project-bullets">
+                <li>Built an AI-powered web application that predicts Diabetes, Heart Disease, and Parkinson's Disease from clinical inputs using trained ML classifiers — deployed and accessible publicly.</li>
+                <li>Designed an intuitive UI that makes complex ML outputs understandable to non-technical users including patients and healthcare workers.</li>
+              </ul>
+            </div>
+
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-name">Breast Cancer Predictor</span>
+                <div class="project-meta">
+                  <span class="project-role-badge">ML / Data Science</span>
+                  <a href="https://breast-cancer-predictor-asbarst-oct22.streamlit.app/" target="_blank" class="project-url">↗ Live</a>
+                </div>
+              </div>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span><span class="tech-pill">Scikit-Learn</span><span class="tech-pill">Plotly</span><span class="tech-pill">Streamlit</span>
+              </div>
+              <ul class="project-bullets">
+                <li>Trained a classification model on the Wisconsin Diagnostic dataset to predict malignancy of cell clusters with radar chart visualisations for interpretability.</li>
+                <li>Added probability scoring so medical professionals can see confidence levels alongside predictions — not just a yes/no answer.</li>
+              </ul>
+            </div>
+
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-name">EduCore — Centralized Learning Platform</span>
+                <div class="project-meta">
+                  <span class="project-role-badge">Full Stack</span>
+                  <a href="https://educore-spark-x.onrender.com/" target="_blank" class="project-url">↗ Live</a>
+                </div>
+              </div>
+              <div class="project-tech">
+                <span class="tech-pill">Python</span><span class="tech-pill">Flask</span><span class="tech-pill">REST API</span><span class="tech-pill">Render</span>
+              </div>
+              <ul class="project-bullets">
+                <li>Designed and developed a full-stack academic platform with role-based portals for students, faculty, and administrators, including AI-powered study insights.</li>
+                <li>Implemented course management, live attendance tracking, assignment submission, grade reports, and interactive dashboards.</li>
+              </ul>
+            </div>
+
+            <div class="project-card">
+              <div class="project-top">
+                <span class="project-name">Enterprise Employee Management System</span>
+                <div class="project-meta">
+                  <span class="project-role-badge">Full Stack</span>
+                  <a href="https://employee-management-system-pi-virid.vercel.app/" target="_blank" class="project-url">↗ Live</a>
+                </div>
+              </div>
+              <div class="project-tech">
+                <span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">Express</span><span class="tech-pill">WebRTC</span>
+              </div>
+              <ul class="project-bullets">
+                <li>Built an enterprise HR platform featuring EmpBot (AI assistant), WebRTC video calling, automated payroll generation, and Excel-based reporting.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- Education -->
+          <div class="section">
+            <div class="section-heading">Education</div>
+            <div class="edu-item">
+              <div class="edu-main">
+                <div class="edu-degree">B.Tech — Artificial Intelligence &amp; Data Science</div>
+                <div class="edu-inst">Hindusthan Institute of Technology, Coimbatore, India</div>
+                <div class="edu-gpa">Currently in 4th Year (Final Year) · 2023 – 2027</div>
+              </div>
+              <div class="edu-year-badge">2023 – 2027</div>
+            </div>
+          </div>
+
+          <!-- Community -->
+          <div class="section">
+            <div class="section-heading">Community &amp; Activities</div>
+            <p class="about-text">
+              Attended the <strong>Cloud Feast Community Meetup (2025)</strong>, a gathering of industry professionals and cloud engineers where I networked, discussed cloud-native architectures, DevOps pipelines, and the future of cloud infrastructure. Events like this remind me how important it is to stay connected to the broader tech community beyond university assignments.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="resume-footer">
+            <span>Portfolio: <a href="https://github.com/asbarnst" target="_blank">github.com/asbarnst</a></span>
+            <span>LinkedIn: <a href="https://linkedin.com/in/mohammed-asbar-41525b305" target="_blank">mohammed-asbar-41525b305</a></span>
+            <span style="font-style:italic;">Open to international academic opportunities</span>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

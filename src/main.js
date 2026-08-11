@@ -6,36 +6,31 @@ import { posts } from './data/posts.js';
 // ABOUT DATA — A. Mohammed Asbar's profile
 // ============================================================
 const skills = [
-  // AI & Data Science
-  "Python", "Machine Learning", "Deep Learning", "TensorFlow",
-  "Scikit-learn", "Pandas", "NumPy", "Data Visualization",
-  // Software Development
-  "Java", "JavaScript", "HTML5", "CSS3",
-  "React", "Node.js", "REST APIs", "Git",
-  // Testing
-  "Selenium", "JUnit", "Postman", "Manual Testing",
-  // Tools
-  "VS Code", "MySQL", "MongoDB", "Jupyter Notebook",
+  // Primary Resume Skills
+  "Python", "JavaScript", "DBMS", "Testing Tools", "API Handling", "Prompting",
+  // Full-Stack & Machine Learning
+  "Machine Learning", "Deep Learning", "React", "Node.js", "Flask",
+  "HTML5", "CSS3", "REST APIs", "Git", "MySQL", "Selenium", "Postman"
 ];
 
 const experience = [
   {
-    year: "2025",
-    role: "Software Developer & Tester",
-    company: "Domain Role — Final Year",
-    desc: "Building and testing AI-driven applications, end-to-end test suites and full-stack projects as part of B.Tech curriculum and personal ventures.",
+    year: "2023 - 2027",
+    role: "B.Tech — Artificial Intelligence & Data Science",
+    company: "Hindusthan Institute of Technology",
+    desc: "Pursuing Bachelor of Technology in AI & Data Science. Developed software platforms, intelligent models, and real-time management applications.",
   },
   {
-    year: "2024",
-    role: "AI & Data Science Projects",
-    company: "Hindusthan Institute of Technology",
-    desc: "Developed ML models, data pipelines and intelligent systems — including predictive analytics and NLP-based tools.",
+    year: "Projects",
+    role: "Full Stack Software Developer",
+    company: "Edu Core — Centralized Learning Platform",
+    desc: "Designed and implemented course management, study material sharing, assignment submission, progress tracking, and user-friendly interface.",
   },
   {
-    year: "2022",
-    role: "B.Tech — AI & Data Science",
-    company: "Hindusthan Institute of Technology",
-    desc: "Started B.Tech programme specialising in Artificial Intelligence and Data Science. Ranked among top students in core subjects.",
+    year: "Projects",
+    role: "Software Developer",
+    company: "Traffic Management System",
+    desc: "Built smart urban traffic system for vehicle monitoring, signal control, real-time traffic data processing, and signal timing optimization.",
   },
 ];
 
@@ -267,28 +262,90 @@ modal.addEventListener('click', (e) => { if (e.target === modal) closePreview();
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePreview(); });
 
 // ============================================================
-// RENDER POSTS
+// RESUME PREVIEW MODAL
+// ============================================================
+const resumeModal = document.getElementById('resume-modal');
+const btnViewResume = document.getElementById('btn-view-resume');
+const resumeModalClose = document.getElementById('resume-modal-close');
+
+if (btnViewResume && resumeModal) {
+  btnViewResume.addEventListener('click', () => {
+    resumeModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  const closeResume = () => {
+    resumeModal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  if (resumeModalClose) resumeModalClose.addEventListener('click', closeResume);
+  resumeModal.addEventListener('click', (e) => { if (e.target === resumeModal) closeResume(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeResume(); });
+}
+
+// ============================================================
+// RENDER POSTS (LinkedIn Activities)
 // ============================================================
 const postsGrid = document.getElementById('posts-grid');
+
+function renderBanner(p) {
+  const bg = p.placeholderBg || 'linear-gradient(135deg, #7c3aed, #a78bfa)';
+  const emoji = p.imagePlaceholder || '📌';
+  const typeLabel = p.type === 'certificate' ? '🏆 Certificate'
+                  : p.type === 'event'       ? '☁️ Event'
+                  : '🚀 Project';
+  const typeCls = `type-${p.type || 'project'}`;
+
+  if (p.image) {
+    // Show real image with a graceful fallback to gradient if file is missing
+    return `
+      <div class="post-banner-img-wrap">
+        <img
+          class="post-banner-img"
+          src="${p.image}"
+          alt="${p.title}"
+          loading="lazy"
+          onerror="this.closest('.post-banner-img-wrap').innerHTML=\`<div class='post-banner-placeholder' style='background:${bg};'><span style='position:relative;z-index:1;font-size:4rem;'>${emoji}</span><span class='post-type-badge ${typeCls}' style='position:absolute;'>${typeLabel}</span></div>\`"
+        />
+        <span class="post-type-badge ${typeCls}">${typeLabel}</span>
+      </div>
+    `;
+  }
+
+  // Gradient placeholder (no image set)
+  return `
+    <div class="post-banner-placeholder" style="background:${bg};">
+      <span style="position:relative;z-index:1;font-size:4rem;">${emoji}</span>
+      <span class="post-type-badge ${typeCls}" style="position:absolute;">${typeLabel}</span>
+    </div>
+  `;
+}
 
 posts.forEach((p, i) => {
   const card = document.createElement('div');
   card.className = 'post-card reveal';
   card.style.animationDelay = `${i * 0.1}s`;
   card.innerHTML = `
-    <div class="post-meta">
-      <span class="post-cat">${p.category}</span>
-      <span class="post-date">${p.date}</span>
-    </div>
-    <h3 class="post-title">${p.title}</h3>
-    <p class="post-excerpt">${p.excerpt}</p>
-    <div class="post-footer">
-      <span class="read-time">⏱ ${p.readTime} min read</span>
-      <a href="${p.url}" class="read-link">Read more →</a>
+    ${renderBanner(p)}
+    <div class="post-body">
+      <div class="post-meta">
+        <span class="post-cat">${p.category}</span>
+        <span class="post-date">${p.date}</span>
+      </div>
+      <h3 class="post-title">${p.title}</h3>
+      <p class="post-excerpt">${p.excerpt}</p>
+      <div class="post-footer">
+        <span class="read-time">⏱ ${p.readTime} min read</span>
+        <div class="post-actions">
+          ${p.linkedinUrl ? `<a href="${p.linkedinUrl}" target="_blank" rel="noopener" class="read-link" onclick="event.stopPropagation()">View ↗</a>` : ''}
+          ${p.shareUrl ? `<a href="${p.shareUrl}" target="_blank" rel="noopener" class="read-link li-share" onclick="event.stopPropagation()">💼 Share on LinkedIn</a>` : ''}
+        </div>
+      </div>
     </div>
   `;
   card.addEventListener('click', () => {
-    if (p.url && p.url !== '#') window.open(p.url, '_blank');
+    if (p.linkedinUrl) window.open(p.linkedinUrl, '_blank');
   });
   postsGrid.appendChild(card);
   revealObserver.observe(card);

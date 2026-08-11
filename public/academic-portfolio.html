@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Portfolio — A. Mohammed Asbar (Italian University Application)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #4f46e5;
+      --accent-light: #818cf8;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --font-main: 'Inter', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e2e8f0;
+      font-family: var(--font-main);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Screen Action Bar */
+    .action-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0f172a;
+      color: #fff;
+      padding: 0.85rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .action-bar a, .action-bar button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.2s;
+    }
+
+    .action-bar .btn-print {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border: none;
+      box-shadow: 0 4px 14px rgba(79,70,229,0.4);
+    }
+
+    .action-bar a:hover, .action-bar button:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Document Wrapper */
+    .portfolio-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+    }
+
+    /* A4 Page Styling */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: var(--card-bg);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      padding: 2.2rem 2.4rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* COVER PAGE */
+    .cover-page {
+      justify-content: space-between;
+      background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%);
+      color: #fff;
+    }
+
+    .cover-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 1rem;
+    }
+
+    .cover-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #38bdf8;
+      background: rgba(56,189,248,0.12);
+      padding: 0.3rem 0.8rem;
+      border-radius: 99px;
+      border: 1px solid rgba(56,189,248,0.3);
+    }
+
+    .cover-center {
+      margin: auto 0;
+    }
+
+    .cover-title {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #c7d2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover-subtitle {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      max-width: 90%;
+    }
+
+    .author-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .author-photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #818cf8;
+    }
+
+    .author-info h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .author-info p {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-top: 0.2rem;
+    }
+
+    .cover-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      background: rgba(0,0,0,0.2);
+      padding: 1.2rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+    }
+
+    .meta-item strong {
+      color: #a78bfa;
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* PROJECT DOSSIER HEADER */
+    .project-num-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: #eef2ff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 99px;
+      width: fit-content;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-header-title {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .author-attribution {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      font-style: italic;
+    }
+
+    /* METADATA TABLE */
+    .project-meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0 1.2rem;
+      font-size: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .project-meta-table th {
+      background: #f1f5f9;
+      color: var(--primary);
+      text-align: left;
+      padding: 0.4rem 0.75rem;
+      font-weight: 700;
+      width: 25%;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-meta-table td {
+      padding: 0.4rem 0.75rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .badge-nature {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .badge-academic { background: #e0f2fe; color: #0369a1; }
+    .badge-professional { background: #fef3c7; color: #b45309; }
+    .badge-individual { background: #f3e8ff; color: #6b21a8; }
+    .badge-group { background: #dcfce7; color: #15803d; }
+
+    /* SECTION BLOCK */
+    .dossier-section {
+      margin-bottom: 1rem;
+    }
+
+    .dossier-heading {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .dossier-p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .dossier-p strong { color: var(--text); }
+
+    /* DIAGRAM BOX */
+    .sketch-box {
+      background: #fafafa;
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 0.8rem 0;
+      text-align: center;
+    }
+
+    .sketch-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sketch-svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .diagram-caption {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    /* FOOTER */
+    .page-footer {
+      margin-top: auto;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* PRINT RULES */
+    @media print {
+      body { background: white !important; }
+      .action-bar { display: none !important; }
+      .portfolio-wrapper { padding: 0 !important; gap: 0 !important; }
+      .page {
+        box-shadow: none !important;
+        page-break-after: always;
+        width: 100% !important;
+        height: 297mm !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCREEN ACTION BAR -->
+  <div class="action-bar">
+    <a href="/">← Back to Portfolio Site</a>
+    <div style="display:flex; gap:0.6rem;">
+      <a href="/Mohammed_Asbar_Resume.pdf" download>↓ Download CV PDF</a>
+      <button class="btn-print" onclick="window.print()">🖨️ Print / Save Compliant Portfolio PDF (&lt;20 MB)</button>
+    </div>
+  </div>
+
+  <div class="portfolio-wrapper">
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE -->
+    <!-- ============================================================ -->
+    <div class="page cover-page">
+      <div class="cover-header">
+        <span class="cover-badge">Academic Dossier 2026</span>
+        <span style="font-size:0.75rem; color:#94a3b8; font-family:var(--font-mono);">Italian University Admissions</span>
+      </div>
+
+      <div class="cover-center">
+        <h1 class="cover-title">Academic &amp; Technical Portfolio</h1>
+        <p class="cover-subtitle">
+          A curated selection of 5 engineering projects demonstrating structural &amp; technical viability, conceptual design, algorithms, and deployment resolution.
+        </p>
+
+        <div class="author-box">
+          <img src="/profile.jpg" alt="A. Mohammed Asbar" class="author-photo" />
+          <div class="author-info">
+            <h2>A. Mohammed Asbar</h2>
+            <p>Candidate for Master's Degree in Artificial Intelligence / Computer Engineering</p>
+            <p style="font-size:0.78rem; color:#94a3b8; margin-top:0.3rem;">B.Tech in Artificial Intelligence &amp; Data Science (Final Year 2023–2027)</p>
+          </div>
+        </div>
+
+        <div class="cover-meta-grid">
+          <div class="meta-item">
+            <strong>Institution</strong>
+            Hindusthan Institute of Technology, Coimbatore, India
+          </div>
+          <div class="meta-item">
+            <strong>Contact Email</strong>
+            asbarnstmohammed@gmail.com
+          </div>
+          <div class="meta-item">
+            <strong>Phone / Location</strong>
+            +91 99620 34901 | Ukkadam, Coimbatore, India
+          </div>
+          <div class="meta-item">
+            <strong>Repositories &amp; Code</strong>
+            github.com/asbarnst | linkedin.com/in/mohammed-asbar-41525b305
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer" style="border-color:rgba(255,255,255,0.15); color:#94a3b8;">
+        <span>Author: A. Mohammed Asbar</span>
+        <span>Strictly Compliant with Italian University Guidelines (Max 5 Projects | &lt;20 MB)</span>
+        <span>Page 1 of 6</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROJECT 1: EDUCORE (Final / Capstone Project) -->
+    <!-- ============================================================ -->
+    <div class="page">
+      <div class="project-num-badge">Project 1 of 5 — Final / Capstone Academic Project</div>
+      <h2 class="project-header-title">EduCore — Centralized Academic &amp; Learning Platform</h2>
+      <p class="author-attribution">Author &amp; Lead Architect: A. Mohammed Asbar</p>
+
+      <!-- Metadata Table -->
+      <table class="project-meta-table">
+        <tr>
+          <th>Project Name &amp; Location</th>
+          <td>EduCore Platform — Hindusthan Institute of Technology, Coimbatore, India</td>
+        </tr>
+        <tr>
+          <th>Nature &amp; Collaboration</th>
+          <td>
+            <span class="badge-nature badge-academic">Academic Project</span>
+            <span class="badge-nature badge-group">Group Work (Role: Lead Architect)</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Level of Study</th>
+          <td>4th Year, 7th Semester B.Tech AI &amp; Data Science</td>
+        </tr>
+        <tr>
+          <th>Date Carried Out</th>
+          <td>September 2025 – November 2025</td>
+        </tr>
+        <tr>
+          <th>Technical Demonstration</th>
+          <td>Full Structural &amp; Technical Viability (Role-Based Security, REST API, Database Schema)</td>
+        </tr>
+      </table>
+
+      <!-- Written Explanation -->
+      <div class="dossier-section">
+        <div class="dossier-heading">1. Design Concept &amp; Inspiration</div>
+        <p class="dossier-p">
+          <strong>Inspiration:</strong> Educational institutions often suffer from fragmented communication tools where attendance tracking, assignment submission, course content, and administrative analytics exist in disconnected silos. EduCore was designed to unify academic workflows into a single high-performance central platform.
+          <br/>
+          <strong>Goals &amp; Objectives:</strong> Build a scalable web system with role-based access control (Student, Faculty, Admin), automated grade calculation, attendance verification, and predictive student progress analytics.
+        </p>
+      </div>
+
+      <!-- System Architecture & Concept Sketches -->
+      <div class="dossier-section">
+        <div class="dossier-heading">2. Concept Sketches &amp; System Blueprint</div>
+        <div class="sketch-box">
+          <div class="sketch-title">EduCore System Architecture &amp; Data Flow (Diagram by A. Mohammed Asbar)</div>
+          <svg class="sketch-svg" viewBox="0 0 700 160" width="100%">
+            <!-- SVG Architecture Diagram -->
+            <rect x="10" y="40" width="120" height="80" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+            <text x="70" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#0369a1">Client Tier</text>
+            <text x="70" y="95" text-anchor="middle" font-size="10" fill="#0284c7">Role Dashboards</text>
+
+            <path d="M 130 80 L 190 80" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <rect x="190" y="25" width="160" height="110" rx="8" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="270" y="55" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b21a8">Python Flask API</text>
+            <text x="270" y="75" text-anchor="middle" font-size="10" fill="#7c3aed">Auth Engine / RBAC</text>
+            <text x="270" y="95" text-anchor="middle" font-size="10" fill="#7c3aed">Grade &amp; Progress Logic</text>
+
+            <path d="M 350 80 L 410 80" stroke="#7c3aed" stroke-width="2"/>
+
+            <rect x="410" y="40" width="130" height="80" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <text x="475" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803d">PostgreSQL DB</text>
+            <text x="475" y="95" text-anchor="middle" font-size="10" fill="#16a34a">Relational Schema</text>
+
+            <path d="M 540 80 L 600 80" stroke="#16a34a" stroke-width="2"/>
+
+            <rect x="600" y="40" width="90" height="80" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+            <text x="645" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309">Cloud Host</text>
+            <text x="645" y="95" text-anchor="middle" font-size="10" fill="#d97706">Render API</text>
+          </svg>
+          <div class="diagram-caption">Figure 1.1: Multi-tier architectural flow diagram detailing client authentication, REST controller logic, and database layer. Diagram authored by A. Mohammed Asbar.</div>
+        </div>
+      </div>
+
+      <!-- Finished Resolution & Viability -->
+      <div class="dossier-section">
+        <div class="dossier-heading">3. Technical Resolution &amp; Viability</div>
+        <p class="dossier-p">
+          <strong>Resolution:</strong> Fully implemented with Python Flask backend, REST API routes, modular HTML5/CSS3 frontend, and PostgreSQL database. Deployed live on Render cloud infrastructure (<a href="https://educore-spark-x.onrender.com/" target="_blank">educore-spark-x.onrender.com</a>).
+          <br/>
+          <strong>Structural Viability:</strong> Unit tested for security (session protection, SQL injection prevention, input sanitization) and verified for low latency load under multi-user access scenarios.
+        </p>
+      </div>
+
+      <div class="page-footer">
+        <span>Project Author: A. Mohammed Asbar</span>
+        <span>EduCore — Final Capstone Project</span>
+        <span>Page 2 of 6</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROJECT 2: MULTIPLE DISEASE PREDICTION (Individual Academic ML) -->
+    <!-- ============================================================ -->
+    <div class="page">
+      <div class="project-num-badge">Project 2 of 5 — Individual Academic AI/ML Project</div>
+      <h2 class="project-header-title">Multiple Disease Prediction System (Healthcare AI)</h2>
+      <p class="author-attribution">Author &amp; Sole Developer: A. Mohammed Asbar</p>
+
+      <!-- Metadata Table -->
+      <table class="project-meta-table">
+        <tr>
+          <th>Project Name &amp; Location</th>
+          <td>Multiple Disease Prediction System — Coimbatore, India</td>
+        </tr>
+        <tr>
+          <th>Nature &amp; Collaboration</th>
+          <td>
+            <span class="badge-nature badge-academic">Academic Project</span>
+            <span class="badge-nature badge-individual">Individual Work</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Level of Study</th>
+          <td>4th Year, 7th Semester B.Tech AI &amp; Data Science</td>
+        </tr>
+        <tr>
+          <th>Date Carried Out</th>
+          <td>November 2025</td>
+        </tr>
+        <tr>
+          <th>Technical Demonstration</th>
+          <td>Machine Learning Classifiers (SVM, Random Forest), Feature Scaling &amp; Cloud Deployment</td>
+        </tr>
+      </table>
+
+      <!-- Written Explanation -->
+      <div class="dossier-section">
+        <div class="dossier-heading">1. Design Concept &amp; Inspiration</div>
+        <p class="dossier-p">
+          <strong>Inspiration:</strong> Early diagnosis of chronic health conditions (Diabetes, Heart Disease, Parkinson's) can significantly improve patient outcomes, yet predictive diagnostic tools are often restricted to complex clinical software.
+          <br/>
+          <strong>Goals &amp; Objectives:</strong> Develop an accessible machine learning platform where user-entered clinical biometric vectors are classified instantly using trained ML models with clear diagnostic confidence indicators.
+        </p>
+      </div>
+
+      <!-- System Architecture & Concept Sketches -->
+      <div class="dossier-section">
+        <div class="dossier-heading">2. Concept Sketches &amp; ML Data Pipeline</div>
+        <div class="sketch-box">
+          <div class="sketch-title">ML Predictive Pipeline &amp; Classifier Workflow (Diagram by A. Mohammed Asbar)</div>
+          <svg class="sketch-svg" viewBox="0 0 700 150" width="100%">
+            <rect x="10" y="40" width="110" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+            <text x="65" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#b45309">Biometric Input</text>
+            <text x="65" y="88" text-anchor="middle" font-size="9" fill="#d97706">Clinical Vector</text>
+
+            <path d="M 120 75 L 180 75" stroke="#d97706" stroke-width="2"/>
+
+            <rect x="180" y="40" width="130" height="70" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+            <text x="245" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">Pre-processing</text>
+            <text x="245" y="88" text-anchor="middle" font-size="9" fill="#0284c7">StandardScaler / Normalization</text>
+
+            <path d="M 310 75 L 370 75" stroke="#0284c7" stroke-width="2"/>
+
+            <rect x="370" y="25" width="150" height="100" rx="6" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="445" y="55" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b21a8">Trained Classifiers</text>
+            <text x="445" y="75" text-anchor="middle" font-size="9" fill="#7c3aed">Support Vector Machine</text>
+            <text x="445" y="92" text-anchor="middle" font-size="9" fill="#7c3aed">Random Forest Ensemble</text>
+
+            <path d="M 520 75 L 580 75" stroke="#7c3aed" stroke-width="2"/>
+
+            <rect x="580" y="40" width="110" height="70" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <text x="635" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#15803d">Streamlit UI</text>
+            <text x="635" y="88" text-anchor="middle" font-size="9" fill="#16a34a">Diagnostic Report</text>
+          </svg>
+          <div class="diagram-caption">Figure 2.1: Data ingestion, feature scaling, model inference, and web deployment pipeline. Authored by A. Mohammed Asbar.</div>
+        </div>
+      </div>
+
+      <!-- Finished Resolution & Viability -->
+      <div class="dossier-section">
+        <div class="dossier-heading">3. Technical Resolution &amp; Viability</div>
+        <p class="dossier-p">
+          <strong>Resolution:</strong> Implemented in Python using Scikit-Learn, Streamlit, Pandas, and NumPy. Trained on validated benchmark clinical datasets. Live online at <a href="https://multiple-disease-predictor-asbarst-nov14.streamlit.app/" target="_blank">multiple-disease-predictor-asbarst-nov14.streamlit.app</a>.
+          <br/>
+          <strong>Viability:</strong> Models achieved high classification accuracy (&gt;88% accuracy across disease parameters). Verified cross-validation metrics and zero-latency real-time inference on cloud.
+        </p>
+      </div>
+
+      <div class="page-footer">
+        <span>Project Author: A. Mohammed Asbar</span>
+        <span>Multiple Disease Predictor — Individual ML Project</span>
+        <span>Page 3 of 6</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROJECT 3: ASHES TECH EMPLOYEE MANAGEMENT (Professional Project 1) -->
+    <!-- ============================================================ -->
+    <div class="page">
+      <div class="project-num-badge">Project 3 of 5 — Professional Project (1 of 2 max)</div>
+      <h2 class="project-header-title">Ashes Tech Enterprise Employee Management System</h2>
+      <p class="author-attribution">Author &amp; Lead Full-Stack Developer: A. Mohammed Asbar</p>
+
+      <!-- Metadata Table -->
+      <table class="project-meta-table">
+        <tr>
+          <th>Project Name &amp; Location</th>
+          <td>Ashes Tech HR Suite — Remote / Enterprise Project</td>
+        </tr>
+        <tr>
+          <th>Nature &amp; Collaboration</th>
+          <td>
+            <span class="badge-nature badge-professional">Professional Project</span>
+            <span class="badge-nature badge-group">Lead Developer (Team Work)</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Level of Study / Experience</th>
+          <td>Professional Industry Project (during 4th Year B.Tech)</td>
+        </tr>
+        <tr>
+          <th>Date Carried Out</th>
+          <td>August 2025</td>
+        </tr>
+        <tr>
+          <th>Technical Demonstration</th>
+          <td>WebRTC Real-Time Video, EmpBot AI Assistant, Payroll Calculation Engine &amp; Vercel Host</td>
+        </tr>
+      </table>
+
+      <!-- Written Explanation -->
+      <div class="dossier-section">
+        <div class="dossier-heading">1. Design Concept &amp; Inspiration</div>
+        <p class="dossier-p">
+          <strong>Inspiration:</strong> Enterprise operations require seamlessly integrated HR management combining video conferencing, automated payroll processing, employee attendance monitoring, and internal AI query resolution.
+          <br/>
+          <strong>Goals &amp; Objectives:</strong> Develop a professional-grade web application equipped with WebRTC peer-to-peer video calls, automated PDF payslip generation, and an embedded HR query chatbot.
+        </p>
+      </div>
+
+      <!-- System Architecture & Concept Sketches -->
+      <div class="dossier-section">
+        <div class="dossier-heading">2. Concept Sketches &amp; WebRTC Real-Time Architecture</div>
+        <div class="sketch-box">
+          <div class="sketch-title">WebRTC Video Calling &amp; AI HR Assistant Architecture (Diagram by A. Mohammed Asbar)</div>
+          <svg class="sketch-svg" viewBox="0 0 700 150" width="100%">
+            <rect x="10" y="40" width="130" height="70" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+            <text x="75" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">React UI Client</text>
+            <text x="75" y="88" text-anchor="middle" font-size="9" fill="#0284c7">Dashboards &amp; State</text>
+
+            <path d="M 140 60 L 220 60" stroke="#0284c7" stroke-width="2"/>
+            <text x="180" y="52" text-anchor="middle" font-size="8" fill="#0284c7">Signaling</text>
+
+            <rect x="220" y="30" width="150" height="90" rx="6" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="295" y="60" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b21a8">Express / Node Backend</text>
+            <text x="295" y="78" text-anchor="middle" font-size="9" fill="#7c3aed">EmpBot AI Assistant</text>
+            <text x="295" y="95" text-anchor="middle" font-size="9" fill="#7c3aed">Payroll Calculation Engine</text>
+
+            <path d="M 370 75 L 450 75" stroke="#7c3aed" stroke-width="2"/>
+
+            <rect x="450" y="40" width="120" height="70" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <text x="510" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#15803d">WebRTC P2P</text>
+            <text x="510" y="88" text-anchor="middle" font-size="9" fill="#16a34a">Peer Video Stream</text>
+
+            <path d="M 570 75 L 630 75" stroke="#16a34a" stroke-width="2"/>
+
+            <rect x="630" y="40" width="60" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+            <text x="660" y="75" text-anchor="middle" font-size="10" font-weight="bold" fill="#b45309">Vercel</text>
+          </svg>
+          <div class="diagram-caption">Figure 3.1: Full-stack WebRTC peer-to-peer signalling and backend service interaction. Diagram authored by A. Mohammed Asbar.</div>
+        </div>
+      </div>
+
+      <!-- Finished Resolution & Viability -->
+      <div class="dossier-section">
+        <div class="dossier-heading">3. Technical Resolution &amp; Viability</div>
+        <p class="dossier-p">
+          <strong>Resolution:</strong> Built with React, Node.js, Express, Axios, and WebRTC protocols. Live deployment at <a href="https://employee-management-system-pi-virid.vercel.app/" target="_blank">employee-management-system-pi-virid.vercel.app</a>.
+          <br/>
+          <strong>Viability:</strong> Successfully handled concurrent WebRTC peer video sessions, automated payroll computations, and exportable financial excel/PDF reporting.
+        </p>
+      </div>
+
+      <div class="page-footer">
+        <span>Project Author: A. Mohammed Asbar</span>
+        <span>Ashes Tech Employee Management — Professional Project</span>
+        <span>Page 4 of 6</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROJECT 4: BREAST CANCER PREDICTOR (Academic Individual Research ML) -->
+    <!-- ============================================================ -->
+    <div class="page">
+      <div class="project-num-badge">Project 4 of 5 — Academic Research &amp; Visualization Project</div>
+      <h2 class="project-header-title">Breast Cancer Diagnostic Predictor &amp; Radar Visualizer</h2>
+      <p class="author-attribution">Author &amp; Principal Investigator: A. Mohammed Asbar</p>
+
+      <!-- Metadata Table -->
+      <table class="project-meta-table">
+        <tr>
+          <th>Project Name &amp; Location</th>
+          <td>Breast Cancer Predictor — Hindusthan Institute of Technology, Coimbatore, India</td>
+        </tr>
+        <tr>
+          <th>Nature &amp; Collaboration</th>
+          <td>
+            <span class="badge-nature badge-academic">Academic Project</span>
+            <span class="badge-nature badge-individual">Individual Work</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Level of Study</th>
+          <td>4th Year, 7th Semester B.Tech AI &amp; Data Science</td>
+        </tr>
+        <tr>
+          <th>Date Carried Out</th>
+          <td>October 2025</td>
+        </tr>
+        <tr>
+          <th>Technical Demonstration</th>
+          <td>Wisconsin Diagnostic ML Classification, Radar Chart Analysis &amp; Probability Confidence Scoring</td>
+        </tr>
+      </table>
+
+      <!-- Written Explanation -->
+      <div class="dossier-section">
+        <div class="dossier-heading">1. Design Concept &amp; Inspiration</div>
+        <p class="dossier-p">
+          <strong>Inspiration:</strong> Medical ML predictions must not act as "black boxes." Clinicians require interpretable data visualizations showing which cellular diagnostic features (radius, texture, concavity) contributed to a malignant/benign classification.
+          <br/>
+          <strong>Goals &amp; Objectives:</strong> Train a high-accuracy classifier on the Wisconsin Diagnostic Breast Cancer dataset and couple it with interactive Plotly radar charts for diagnostic interpretability.
+        </p>
+      </div>
+
+      <!-- System Architecture & Concept Sketches -->
+      <div class="dossier-section">
+        <div class="dossier-heading">2. Concept Sketches &amp; Radar Visualizer Methodology</div>
+        <div class="sketch-box">
+          <div class="sketch-title">Feature Vector Extraction &amp; Interpretability Radar (Diagram by A. Mohammed Asbar)</div>
+          <svg class="sketch-svg" viewBox="0 0 700 150" width="100%">
+            <rect x="10" y="40" width="120" height="70" rx="6" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="70" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b21a8">Wisconsin Dataset</text>
+            <text x="70" y="88" text-anchor="middle" font-size="9" fill="#7c3aed">30 Cell Features</text>
+
+            <path d="M 130 75 L 200 75" stroke="#7c3aed" stroke-width="2"/>
+
+            <rect x="200" y="40" width="140" height="70" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+            <text x="270" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">Model Training</text>
+            <text x="270" y="88" text-anchor="middle" font-size="9" fill="#0284c7">Scikit-Learn Classifier</text>
+
+            <path d="M 340 75 L 410 75" stroke="#0284c7" stroke-width="2"/>
+
+            <rect x="410" y="25" width="150" height="100" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <text x="485" y="55" text-anchor="middle" font-size="11" font-weight="bold" fill="#15803d">Plotly Engine</text>
+            <text x="485" y="75" text-anchor="middle" font-size="9" fill="#16a34a">Interactive Radar Overlay</text>
+            <text x="485" y="92" text-anchor="middle" font-size="9" fill="#16a34a">Malignancy Probability</text>
+
+            <path d="M 560 75 L 620 75" stroke="#16a34a" stroke-width="2"/>
+
+            <rect x="620" y="40" width="70" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+            <text x="655" y="75" text-anchor="middle" font-size="10" font-weight="bold" fill="#b45309">Streamlit</text>
+          </svg>
+          <div class="diagram-caption">Figure 4.1: Feature transformation pipeline and Plotly radar overlay engine. Authored by A. Mohammed Asbar.</div>
+        </div>
+      </div>
+
+      <!-- Finished Resolution & Viability -->
+      <div class="dossier-section">
+        <div class="dossier-heading">3. Technical Resolution &amp; Viability</div>
+        <p class="dossier-p">
+          <strong>Resolution:</strong> Built in Python with Scikit-Learn, Plotly, Streamlit, and Pandas. Live application hosted at <a href="https://breast-cancer-predictor-asbarst-oct22.streamlit.app/" target="_blank">breast-cancer-predictor-asbarst-oct22.streamlit.app</a>.
+          <br/>
+          <strong>Viability:</strong> Achieved 97.4% diagnostic classification accuracy on validation test split. Radar visualization enables clear feature deviation analysis compared to baseline medical norms.
+        </p>
+      </div>
+
+      <div class="page-footer">
+        <span>Project Author: A. Mohammed Asbar</span>
+        <span>Breast Cancer Predictor — Research ML Project</span>
+        <span>Page 5 of 6</span>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PROJECT 5: SMART URBAN TRAFFIC MANAGEMENT (Academic Systems Project) -->
+    <!-- ============================================================ -->
+    <div class="page">
+      <div class="project-num-badge">Project 5 of 5 — Systems Engineering Academic Project</div>
+      <h2 class="project-header-title">Smart Urban Traffic Management &amp; Dynamic Signal Control</h2>
+      <p class="author-attribution">Author &amp; Systems Developer: A. Mohammed Asbar</p>
+
+      <!-- Metadata Table -->
+      <table class="project-meta-table">
+        <tr>
+          <th>Project Name &amp; Location</th>
+          <td>Traffic Management System — Coimbatore Urban Study, India</td>
+        </tr>
+        <tr>
+          <th>Nature &amp; Collaboration</th>
+          <td>
+            <span class="badge-nature badge-academic">Academic Project</span>
+            <span class="badge-nature badge-group">Group Project (Role: Lead Systems Developer)</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Level of Study</th>
+          <td>3rd Year, 6th Semester B.Tech AI &amp; Data Science</td>
+        </tr>
+        <tr>
+          <th>Date Carried Out</th>
+          <td>Academic Year 2024 – 2025</td>
+        </tr>
+        <tr>
+          <th>Technical Demonstration</th>
+          <td>Real-Time Data Processing, Vehicle Monitoring Algorithms &amp; Traffic Signal Timing Optimization</td>
+        </tr>
+      </table>
+
+      <!-- Written Explanation -->
+      <div class="dossier-section">
+        <div class="dossier-heading">1. Design Concept &amp; Inspiration</div>
+        <p class="dossier-p">
+          <strong>Inspiration:</strong> Static timer traffic signals cause severe urban congestion and unnecessary fuel consumption because green light durations do not adapt dynamically to real-time traffic density.
+          <br/>
+          <strong>Goals &amp; Objectives:</strong> Develop an intelligent traffic management system that monitors vehicle density at intersections, processes real-time traffic flow data, and dynamically adjusts signal green-time durations.
+        </p>
+      </div>
+
+      <!-- System Architecture & Concept Sketches -->
+      <div class="dossier-section">
+        <div class="dossier-heading">2. Concept Sketches &amp; Dynamic Timing Control Logic</div>
+        <div class="sketch-box">
+          <div class="sketch-title">Vehicle Density Detection &amp; Signal Control Loop (Diagram by A. Mohammed Asbar)</div>
+          <svg class="sketch-svg" viewBox="0 0 700 150" width="100%">
+            <rect x="10" y="40" width="120" height="70" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+            <text x="70" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">Vehicle Sensors</text>
+            <text x="70" y="88" text-anchor="middle" font-size="9" fill="#0284c7">Real-Time Monitoring</text>
+
+            <path d="M 130 75 L 200 75" stroke="#0284c7" stroke-width="2"/>
+
+            <rect x="200" y="30" width="150" height="90" rx="6" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/>
+            <text x="275" y="60" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b21a8">Density Processing</text>
+            <text x="275" y="78" text-anchor="middle" font-size="9" fill="#7c3aed">Queue Length Algorithm</text>
+            <text x="275" y="95" text-anchor="middle" font-size="9" fill="#7c3aed">Congestion Index</text>
+
+            <path d="M 350 75 L 430 75" stroke="#7c3aed" stroke-width="2"/>
+
+            <rect x="430" y="40" width="140" height="70" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+            <text x="500" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="#15803d">Signal Controller</text>
+            <text x="500" y="88" text-anchor="middle" font-size="9" fill="#16a34a">Dynamic Green Timing</text>
+
+            <path d="M 570 75 L 630 75" stroke="#16a34a" stroke-width="2"/>
+
+            <rect x="630" y="40" width="60" height="70" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+            <text x="660" y="75" text-anchor="middle" font-size="10" font-weight="bold" fill="#b45309">Analytics</text>
+          </svg>
+          <div class="diagram-caption">Figure 5.1: Real-time traffic queue length calculation and dynamic green-signal timing loop. Authored by A. Mohammed Asbar.</div>
+        </div>
+      </div>
+
+      <!-- Finished Resolution & Viability -->
+      <div class="dossier-section">
+        <div class="dossier-heading">3. Technical Resolution &amp; Viability</div>
+        <p class="dossier-p">
+          <strong>Resolution:</strong> Built in Python with data processing and algorithmic timing modules. Evaluated on simulated multi-lane intersection datasets.
+          <br/>
+          <strong>Viability:</strong> Simulation testing demonstrated a ~28% reduction in average intersection waiting times compared to fixed-timer signal cycles.
+        </p>
+      </div>
+
+      <div class="page-footer">
+        <span>Project Author: A. Mohammed Asbar</span>
+        <span>Traffic Management System — Systems Engineering Project</span>
+        <span>Page 6 of 6</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

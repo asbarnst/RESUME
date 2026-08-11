@@ -1,9 +1,29 @@
 {
-  "outputDirectory": "dist",
-  "rewrites": [
+  "version": 2,
+  "routes": [
     {
-      "source": "/((?!.*\\.).*)",
-      "destination": "/index.html"
+      "src": "/Mohammed_Asbar_Resume.pdf",
+      "dest": "/Mohammed_Asbar_Resume.pdf"
+    },
+    {
+      "src": "/Mohammed_Asbar_Academic_Portfolio.pdf",
+      "dest": "/Mohammed_Asbar_Academic_Portfolio.pdf"
+    },
+    {
+      "src": "/resume.html",
+      "dest": "/resume.html"
+    },
+    {
+      "src": "/academic-portfolio.html",
+      "dest": "/academic-portfolio.html"
+    },
+    {
+      "src": "/(.*)\\.(.*)",
+      "dest": "/$1.$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }

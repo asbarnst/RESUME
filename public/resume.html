@@ -91,35 +91,30 @@
     /* ======== RESUME PAPER ======== */
     .resume {
       width: 210mm;
-      height: 297mm;
-      max-height: 297mm;
+      min-height: 297mm;
       background: #ffffff;
       box-shadow: 0 25px 60px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
       position: relative;
-      overflow: hidden;
     }
 
     /* ======== LEFT SIDEBAR ======== */
     .layout {
       display: flex;
       flex: 1;
-      height: 297mm;
-      max-height: 297mm;
-      overflow: hidden;
+      min-height: 297mm;
     }
 
     .sidebar {
-      width: 70mm;
+      width: 68mm;
       background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
       color: #f1f5f9;
-      padding: 1.5rem 1.1rem 1rem;
+      padding: 1.2rem 1rem 0.8rem;
       display: flex;
       flex-direction: column;
       gap: 0;
       position: relative;
-      overflow: hidden;
     }
 
     /* Decorative circles on sidebar */
@@ -315,12 +310,10 @@
     /* ======== MAIN CONTENT ======== */
     .main-content {
       flex: 1;
-      padding: 1.3rem 1.4rem 1rem 1.3rem;
+      padding: 1.2rem 1.3rem 0.8rem 1.2rem;
       display: flex;
       flex-direction: column;
       gap: 0;
-      height: 297mm;
-      max-height: 297mm;
       box-sizing: border-box;
     }
 
@@ -892,20 +885,11 @@
             <div class="cv-subtitle">B.Tech — Artificial Intelligence &amp; Data Science · Hindusthan Institute of Technology, India</div>
           </div>
 
-          <!-- Motivation / Personal Statement -->
-          <div class="motivation-block">
-            <p>
-              I am genuinely excited about the opportunity to study in Italy — a country I admire not only for its rich academic tradition but also for its forward-thinking approach to technology and innovation. Studying at an Italian university would allow me to <strong>merge my passion for Artificial Intelligence and software engineering</strong> with an international perspective that I deeply value. I am the kind of learner who does not stop at theory — I build things, break them, and rebuild them better. Every project I have shipped is proof of that mindset.
-            </p>
-          </div>
-
-          <!-- About Me -->
+          <!-- Profile Summary -->
           <div class="section">
-            <div class="section-heading">About Me</div>
+            <div class="section-heading">Professional Profile</div>
             <p class="about-text">
-              I'm a 4th-year B.Tech student specialising in <strong>Artificial Intelligence &amp; Data Science</strong>, and honestly, I love what I do. Over the past two years I have gone from writing my first Python script to deploying full-stack applications and live ML models that real people use. My work spans healthcare AI, urban traffic management, enterprise software, and e-commerce — not because I had to, but because I was genuinely curious about each of those problems.
-              <br/><br/>
-              I believe the best software is <strong>built with empathy</strong>: for the user, for the team, and for the problem. That belief shows in how I write code — clean, documented, and tested. I am comfortable working across the stack and I pick up new tools quickly, which I think is more valuable than knowing any single technology perfectly.
+              Final-year <strong>B.Tech Artificial Intelligence &amp; Data Science</strong> student at Hindusthan Institute of Technology. Passionate software developer with proven experience building and deploying full-stack web applications, interactive ML models, and healthcare AI tools. Enthusiastic applicant for Italian university Master's programs combining AI research with real-world application.
             </p>
           </div>
 
@@ -925,8 +909,7 @@
                 <span class="tech-pill">Python</span><span class="tech-pill">Streamlit</span><span class="tech-pill">Scikit-Learn</span><span class="tech-pill">Pandas</span>
               </div>
               <ul class="project-bullets">
-                <li>Built an AI-powered web application that predicts Diabetes, Heart Disease, and Parkinson's Disease from clinical inputs using trained ML classifiers — deployed and accessible publicly.</li>
-                <li>Designed an intuitive UI that makes complex ML outputs understandable to non-technical users including patients and healthcare workers.</li>
+                <li>Built &amp; deployed an AI healthcare web app predicting Diabetes, Heart, and Parkinson's diseases using trained ML classifiers with clear clinical visualisations.</li>
               </ul>
             </div>
 
@@ -942,8 +925,7 @@
                 <span class="tech-pill">Python</span><span class="tech-pill">Scikit-Learn</span><span class="tech-pill">Plotly</span><span class="tech-pill">Streamlit</span>
               </div>
               <ul class="project-bullets">
-                <li>Trained a classification model on the Wisconsin Diagnostic dataset to predict malignancy of cell clusters with radar chart visualisations for interpretability.</li>
-                <li>Added probability scoring so medical professionals can see confidence levels alongside predictions — not just a yes/no answer.</li>
+                <li>Trained a classification model on Wisconsin Diagnostic dataset with radar chart interpretability and probability scoring for medical professionals.</li>
               </ul>
             </div>
 
@@ -959,8 +941,7 @@
                 <span class="tech-pill">Python</span><span class="tech-pill">Flask</span><span class="tech-pill">REST API</span><span class="tech-pill">Render</span>
               </div>
               <ul class="project-bullets">
-                <li>Designed and developed a full-stack academic platform with role-based portals for students, faculty, and administrators, including AI-powered study insights.</li>
-                <li>Implemented course management, live attendance tracking, assignment submission, grade reports, and interactive dashboards.</li>
+                <li>Developed a full-stack learning platform with role-based portals for students, faculty, and admins, featuring course management and study insights.</li>
               </ul>
             </div>
 
@@ -976,8 +957,7 @@
                 <span class="tech-pill">React</span><span class="tech-pill">Vite</span><span class="tech-pill">React Router</span><span class="tech-pill">CSS</span>
               </div>
               <ul class="project-bullets">
-                <li>Built a premium multi-page tech product catalog with category browsing, advanced filters (price, rating), wishlist, compare, and light/dark mode.</li>
-                <li>Integrated Google Sign-In and an admin management panel with clean, responsive UI.</li>
+                <li>Built a responsive multi-page e-commerce catalog featuring category browsing, advanced filters, wishlist, product comparisons, and dark mode.</li>
               </ul>
             </div>
 
@@ -993,7 +973,7 @@
                 <span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">Express</span><span class="tech-pill">WebRTC</span>
               </div>
               <ul class="project-bullets">
-                <li>Built an enterprise HR platform featuring EmpBot (AI assistant), WebRTC video calling, automated payroll generation, and Excel-based reporting.</li>
+                <li>Architected an HR management system featuring EmpBot (AI assistant), WebRTC video calling, automated payroll, and attendance reporting.</li>
               </ul>
             </div>
 

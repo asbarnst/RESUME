@@ -5,27 +5,50 @@
 import { chromium } from 'playwright';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { readFileSync, existsSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Helper: read image as base64 data URI
+function toDataURI(filePath, mime) {
+  if (!existsSync(filePath)) return null;
+  const data = readFileSync(filePath).toString('base64');
+  return `data:${mime};base64,${data}`;
+}
 
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  // Use the local dev server so /profile.jpg and all assets load correctly
-  // Make sure `npm run dev` is running on port 5173 before running this script
+  // Load resume from dev server
   await page.goto('http://localhost:5173/resume.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
 
-  // Wait for the profile photo to fully render
-  await page.waitForSelector('.profile-photo', { state: 'visible' });
-  await page.waitForFunction(() => {
-    const img = document.querySelector('.profile-photo');
-    return img && img.complete && img.naturalWidth > 0;
+  // Inject images as base64 data URIs to guarantee they render in PDF
+  const photoPath = resolve(__dirname, 'public', 'profile.jpg');
+  const sigPath   = resolve(__dirname, 'public', 'signature.png');
+
+  const photoURI = toDataURI(photoPath, 'image/jpeg');
+  const sigURI   = toDataURI(sigPath, 'image/png');
+
+  await page.evaluate(({ photoURI, sigURI }) => {
+    if (photoURI) {
+      const photo = document.querySelector('.profile-photo');
+      if (photo) { photo.src = photoURI; photo.style.display = ''; }
+    }
+    if (sigURI) {
+      const sig = document.querySelector('.signature-img');
+      if (sig) { sig.src = sigURI; }
+    }
+  }, { photoURI, sigURI });
+
+  // Wait for images to render after src swap
+  await page.waitForTimeout(1500);
+
+  // Hide the action bar before printing
+  await page.addStyleTag({
+    content: '.action-bar { display: none !important; } .page-wrapper { padding: 0 !important; }'
   });
-  await page.waitForTimeout(1000);
-
-  // Hide the action bar (screen-only nav) before printing
-  await page.addStyleTag({ content: '.action-bar { display: none !important; } .page-wrapper { padding: 0 !important; }' });
 
   const outputPath = resolve(__dirname, 'public', 'Mohammed_Asbar_Resume.pdf');
 
@@ -37,5 +60,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
   });
 
   await browser.close();
-  console.log('✅ PDF with photo generated successfully:', outputPath);
+  console.log('✅ PDF with photo + signature generated:', outputPath);
 })();
+

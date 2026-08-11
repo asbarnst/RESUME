@@ -85,32 +85,36 @@
     .page-wrapper {
       display: flex;
       justify-content: center;
-      padding: 2.5rem 1rem 4rem;
+      padding: 1.5rem 1rem 2rem;
     }
 
     /* ======== RESUME PAPER ======== */
     .resume {
       width: 210mm;
-      min-height: 297mm;
+      height: 297mm;
+      max-height: 297mm;
       background: #ffffff;
       box-shadow: 0 25px 60px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
     }
 
     /* ======== LEFT SIDEBAR ======== */
     .layout {
       display: flex;
       flex: 1;
-      min-height: 297mm;
+      height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
     }
 
     .sidebar {
-      width: 74mm;
+      width: 70mm;
       background: linear-gradient(165deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
       color: #f1f5f9;
-      padding: 2.8rem 1.5rem 2rem;
+      padding: 1.5rem 1.1rem 1rem;
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -145,48 +149,48 @@
     .profile-photo-wrap {
       display: flex;
       justify-content: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .profile-photo {
-      width: 95px;
-      height: 95px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top center;
-      border: 3px solid rgba(139, 92, 246, 0.8);
-      box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.15), 0 8px 24px rgba(0,0,0,0.4);
+      border: 2.5px solid rgba(139, 92, 246, 0.8);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15), 0 6px 18px rgba(0,0,0,0.4);
     }
 
     /* Sidebar sections */
     .side-section {
-      margin-bottom: 1.6rem;
+      margin-bottom: 0.95rem;
     }
 
     .side-heading {
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 800;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: #a78bfa;
       border-bottom: 1px solid rgba(139, 92, 246, 0.35);
-      padding-bottom: 0.35rem;
-      margin-bottom: 0.7rem;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.45rem;
     }
 
     .side-contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.45rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.72rem;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.68rem;
       color: #cbd5e1;
-      line-height: 1.4;
+      line-height: 1.35;
       word-break: break-word;
     }
 
     .side-contact-item .icon {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       margin-top: 0.05rem;
       flex-shrink: 0;
       color: #818cf8;
@@ -203,26 +207,26 @@
 
     /* Skills bars */
     .skill-item {
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.45rem;
     }
 
     .skill-label {
-      font-size: 0.7rem;
+      font-size: 0.66rem;
       font-weight: 600;
       color: #e2e8f0;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.18rem;
       display: flex;
       justify-content: space-between;
     }
 
     .skill-level-text {
-      font-size: 0.6rem;
+      font-size: 0.56rem;
       color: #94a3b8;
       font-weight: 400;
     }
 
     .skill-bar-bg {
-      height: 4px;
+      height: 3.5px;
       background: rgba(255,255,255,0.1);
       border-radius: 99px;
       overflow: hidden;
@@ -238,16 +242,16 @@
     .side-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
+      gap: 0.28rem;
     }
 
     .side-tag {
       background: rgba(99, 102, 241, 0.18);
       border: 1px solid rgba(139, 92, 246, 0.3);
       color: #c4b5fd;
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 600;
-      padding: 0.22rem 0.55rem;
+      padding: 0.16rem 0.45rem;
       border-radius: 4px;
       font-family: 'JetBrains Mono', monospace;
     }
@@ -257,17 +261,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .lang-name {
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       font-weight: 600;
       color: #e2e8f0;
     }
 
     .lang-level {
-      font-size: 0.6rem;
+      font-size: 0.56rem;
       color: #94a3b8;
     }
 
@@ -277,8 +281,8 @@
     }
 
     .dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: rgba(255,255,255,0.15);
       border: 1px solid rgba(139,92,246,0.4);
@@ -291,12 +295,12 @@
 
     /* Certifications list */
     .cert-item {
-      font-size: 0.68rem;
+      font-size: 0.64rem;
       color: #cbd5e1;
-      margin-bottom: 0.4rem;
-      padding-left: 0.7rem;
+      margin-bottom: 0.3rem;
+      padding-left: 0.6rem;
       position: relative;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .cert-item::before {
@@ -304,23 +308,26 @@
       position: absolute;
       left: 0;
       color: #a78bfa;
-      font-size: 0.5rem;
+      font-size: 0.45rem;
       top: 0.1rem;
     }
 
     /* ======== MAIN CONTENT ======== */
     .main-content {
       flex: 1;
-      padding: 2.5rem 2rem 2rem 1.8rem;
+      padding: 1.3rem 1.4rem 1rem 1.3rem;
       display: flex;
       flex-direction: column;
       gap: 0;
+      height: 297mm;
+      max-height: 297mm;
+      box-sizing: border-box;
     }
 
     /* Name + title block */
     .name-block {
-      margin-bottom: 1.4rem;
-      padding-bottom: 1.2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.6rem;
       border-bottom: 2px solid #e2e8f0;
       position: relative;
     }
@@ -330,14 +337,14 @@
       position: absolute;
       bottom: -2px;
       left: 0;
-      width: 60px;
+      width: 50px;
       height: 2px;
       background: linear-gradient(90deg, #6366f1, #8b5cf6);
     }
 
     .cv-name {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.95rem;
+      font-size: 1.75rem;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.02em;
@@ -345,36 +352,36 @@
     }
 
     .cv-title {
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #6366f1;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
     }
 
     .cv-subtitle {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       color: #64748b;
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
       font-style: italic;
     }
 
     /* Section headings */
     .section {
-      margin-bottom: 1.3rem;
+      margin-bottom: 0.75rem;
     }
 
     .section-heading {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #6366f1;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.45rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .section-heading::after {
@@ -386,9 +393,9 @@
 
     /* About / Objective */
     .about-text {
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       color: #475569;
-      line-height: 1.75;
+      line-height: 1.55;
       font-style: normal;
     }
 
@@ -399,11 +406,10 @@
 
     /* Project cards */
     .project-card {
-      margin-bottom: 1rem;
-      padding-left: 0.8rem;
-      border-left: 2.5px solid #e2e8f0;
+      margin-bottom: 0.5rem;
+      padding-left: 0.7rem;
+      border-left: 2px solid #e2e8f0;
       position: relative;
-      transition: border-color 0.2s;
     }
 
     .project-card:last-child {
@@ -414,7 +420,7 @@
       content: '';
       position: absolute;
       top: 0.25rem;
-      left: -4px;
+      left: -3.5px;
       width: 5px;
       height: 5px;
       border-radius: 50%;
@@ -426,12 +432,12 @@
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-bottom: 0.25rem;
+      gap: 0.2rem;
+      margin-bottom: 0.15rem;
     }
 
     .project-name {
-      font-size: 0.84rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #1e293b;
     }
@@ -439,13 +445,13 @@
     .project-meta {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .project-role-badge {
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 700;
-      padding: 0.15rem 0.55rem;
+      padding: 0.1rem 0.45rem;
       border-radius: 4px;
       background: #f0f4ff;
       border: 1px solid #c7d2fe;
@@ -455,27 +461,23 @@
     }
 
     .project-url {
-      font-size: 0.63rem;
+      font-size: 0.58rem;
       color: #6366f1;
       font-family: 'JetBrains Mono', monospace;
       text-decoration: none;
     }
 
-    .project-url:hover {
-      text-decoration: underline;
-    }
-
     .project-tech {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
-      margin-bottom: 0.4rem;
+      gap: 0.25rem;
+      margin-bottom: 0.25rem;
     }
 
     .tech-pill {
-      font-size: 0.58rem;
+      font-size: 0.54rem;
       font-weight: 600;
-      padding: 0.12rem 0.45rem;
+      padding: 0.08rem 0.38rem;
       border-radius: 3px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -488,12 +490,12 @@
     }
 
     .project-bullets li {
-      font-size: 0.76rem;
+      font-size: 0.69rem;
       color: #64748b;
-      line-height: 1.55;
-      padding-left: 0.9rem;
+      line-height: 1.45;
+      padding-left: 0.8rem;
       position: relative;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
     }
 
     .project-bullets li::before {
@@ -513,49 +515,49 @@
     }
 
     .edu-main .edu-degree {
-      font-size: 0.84rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: #1e293b;
     }
 
     .edu-main .edu-inst {
-      font-size: 0.76rem;
+      font-size: 0.7rem;
       color: #64748b;
-      margin-top: 0.2rem;
+      margin-top: 0.15rem;
     }
 
     .edu-main .edu-gpa {
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       color: #6366f1;
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
       font-weight: 600;
     }
 
     .edu-year-badge {
-      font-size: 0.7rem;
+      font-size: 0.64rem;
       font-weight: 700;
       color: #4338ca;
       background: #eef2ff;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
+      padding: 0.15rem 0.5rem;
+      border-radius: 5px;
       white-space: nowrap;
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Quote / motivation block */
+    /* Motivation block */
     .motivation-block {
       background: linear-gradient(135deg, #faf5ff 0%, #f0f4ff 100%);
       border: 1px solid #ddd6fe;
       border-left: 3px solid #6366f1;
-      border-radius: 0 8px 8px 0;
-      padding: 0.85rem 1rem;
-      margin-bottom: 1.3rem;
+      border-radius: 0 6px 6px 0;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .motivation-block p {
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       color: #475569;
-      line-height: 1.7;
+      line-height: 1.5;
       font-style: italic;
     }
 
@@ -566,22 +568,24 @@
 
     /* Declaration / Signature block */
     .declaration-block {
-      margin-top: 1.2rem;
-      margin-bottom: 0.8rem;
-      padding: 0.85rem 1rem;
+      margin-top: 0.6rem;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 0.7rem;
       border-top: 1px dashed #e2e8f0;
+      background: #fafafa;
+      border-radius: 6px;
     }
 
     .declaration-title {
-      font-size: 0.65rem;
+      font-size: 0.58rem;
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #6366f1;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .declaration-title::after {
@@ -592,17 +596,17 @@
     }
 
     .declaration-text {
-      font-size: 0.75rem;
+      font-size: 0.67rem;
       color: #475569;
-      line-height: 1.65;
-      margin-bottom: 0.9rem;
+      line-height: 1.45;
+      margin-bottom: 0.5rem;
     }
 
     .declaration-sign-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 0.5rem;
     }
 
@@ -610,33 +614,32 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.2rem;
+      gap: 0.15rem;
     }
 
     .signature-img {
-      height: 52px;
-      max-width: 140px;
+      height: 38px;
+      max-width: 130px;
       object-fit: contain;
       object-position: left;
-      filter: contrast(1.2);
     }
 
     .signature-name {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
       color: #1e293b;
       border-top: 1px solid #cbd5e1;
-      padding-top: 0.2rem;
-      width: 140px;
+      padding-top: 0.15rem;
+      width: 130px;
     }
 
     .signature-label {
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       color: #64748b;
     }
 
     .sign-date {
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       color: #475569;
       text-align: right;
     }
@@ -649,7 +652,7 @@
     /* Footer */
     .resume-footer {
       margin-top: auto;
-      padding-top: 1rem;
+      padding-top: 0.5rem;
       border-top: 1px solid #f1f5f9;
       display: flex;
       justify-content: space-between;

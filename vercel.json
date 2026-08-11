@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/Mohammed_Asbar_Resume.pdf",
+      "headers": { "content-type": "application/pdf" },
+      "dest": "/Mohammed_Asbar_Resume.pdf"
+    },
+    {
+      "src": "/Mohammed_Asbar_Academic_Portfolio.pdf",
+      "headers": { "content-type": "application/pdf" },
+      "dest": "/Mohammed_Asbar_Academic_Portfolio.pdf"
+    },
+    {
+      "src": "/resume.html",
+      "dest": "/resume.html"
+    },
+    {
+      "src": "/academic-portfolio.html",
+      "dest": "/academic-portfolio.html"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
